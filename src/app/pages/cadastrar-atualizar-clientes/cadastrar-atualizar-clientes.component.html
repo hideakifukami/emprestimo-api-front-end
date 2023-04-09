@@ -1,0 +1,59 @@
+<h1 class="display-6">{{ clienteCpf ? 'Editar' : 'Cadastrar' }}</h1>
+<hr />
+
+<div>{{ clienteForm.value | json }}</div>
+<div class="container-fluid">
+  <form [formGroup]= "clienteForm" (ngSubmit)="cadastrar()">
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input id="nome" type="text" class="form-control" formControlName="nome" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="cpf" class="form-label">CPF</label>
+          <input id="cpf" type="number" class="form-control" formControlName="cpf" max="11" min="0" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input id="telefone" type="text" class="form-control" formControlName="telefone" max="11" min="0" />
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="mb-3">
+          <label for="rua" class="form-label">Rua</label>
+          <input id="rua" type="text" class="form-control" formControlName="rua" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="numero" class="form-label">Numero</label>
+          <input id="numero" type="number" class="form-control" formControlName="numero" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="complemento" class="form-label">Complemento</label>
+          <input id="complemento" type="text" class="form-control" formControlName="complemento" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="cep" class="form-label">CEP</label>
+          <input id="cep" type="text" class="form-control" formControlName="cep" />
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="mb-3">
+          <label for="rendimentoMensal" class="form-label">Rendimento Mensal</label>
+          <input id="rendimentoMensal" type="text" class="form-control" formControlName="rendimentoMensal" />
+        </div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">{{ clienteCpf ? 'Editar' : 'Cadastrar' }}</button>
+  </form>
+</div>

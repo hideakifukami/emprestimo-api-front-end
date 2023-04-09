@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
-import { CadastrarAtualizarComponent } from './pages/cadastrar-atualizar/cadastrar-atualizar.component';
+import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,13 @@ import { CadastrarAtualizarComponent } from './pages/cadastrar-atualizar/cadastr
     NavbarComponent,
     HomeComponent,
     ClientesComponent,
-    CadastrarAtualizarComponent
+    CadastrarAtualizarClientesComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

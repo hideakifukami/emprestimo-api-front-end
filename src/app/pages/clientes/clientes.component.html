@@ -1,5 +1,6 @@
 <h1 class="display-6">Clientes</h1>
 <hr>
+<a routerLink="/clientes/cadastrar" class="btn btn-dark">Novo</a>
 <table class="table table-striped table-bordered mt-3">
   <thead>
     <tr>
@@ -18,10 +19,10 @@
       <th scope="row">{{cliente.nome}}</th>
       <td>{{cliente.cpf}}</td>
       <td>{{cliente.telefone}}</td>
-      <td>{{cliente.rua}}</td>
-      <td>{{cliente.numero}}</td>
-      <td>{{cliente.complemento}}</td>
-      <td>{{cliente.cep}}</td>
+      <td>{{cliente.endereco.rua}}</td>
+      <td>{{cliente.endereco.numero}}</td>
+      <td>{{cliente.endereco.complemento}}</td>
+      <td>{{cliente.endereco.cep}}</td>
       <td>{{cliente.rendimentoMensal| currency: 'BRL'}}</td>
       <td>
         <button type="button" class="btn btn-dark btn-sm">Editar</button>
