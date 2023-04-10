@@ -16,10 +16,12 @@ export class CadastrarAtualizarClientesComponent {
     nome: new FormControl('', Validators.required),
     cpf: new FormControl(12345678910, Validators.required),
     telefone: new FormControl('', Validators.required),
-    rua: new FormControl('', Validators.required),
-    numero: new FormControl(123, Validators.required),
-    complemento: new FormControl('', Validators.required),
-    cep: new FormControl('', Validators.required),
+    endereco: new FormGroup({
+      rua: new FormControl('', Validators.required),
+      numero: new FormControl(123, Validators.required),
+      complemento: new FormControl('', Validators.required),
+      cep: new FormControl('', Validators.required)
+    }),
     rendimentoMensal: new FormControl(1000, Validators.required)
   })
 
@@ -34,10 +36,12 @@ export class CadastrarAtualizarClientesComponent {
           nome: cliente.nome || '',
           cpf: cliente.cpf || 0,
           telefone: cliente.telefone || '',
-          rua: cliente.endereco.rua || '',
-          numero: cliente.endereco.numero || null,
-          complemento: cliente.endereco.complemento || '',
-          cep: cliente.endereco.cep || '',
+          endereco: {
+            rua: cliente.endereco.rua || '',
+            numero: cliente.endereco.numero || null,
+            complemento: cliente.endereco.complemento || '',
+            cep: cliente.endereco.cep || ''
+          },
           rendimentoMensal: cliente.rendimentoMensal || null
         })
       });
