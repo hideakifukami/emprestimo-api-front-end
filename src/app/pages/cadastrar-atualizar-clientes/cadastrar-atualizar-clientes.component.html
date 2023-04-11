@@ -23,28 +23,30 @@
           <input id="telefone" type="text" class="form-control" formControlName="telefone" max="11" min="0" />
         </div>
       </div>
-      <div class="col-6">
-        <div class="mb-3">
-          <label for="rua" class="form-label">Rua</label>
-          <input id="rua" type="text" class="form-control" formControlName="rua" />
+      <div formGroupName="endereco">
+        <div class="col-6">
+          <div class="mb-3">
+            <label for="rua" class="form-label">Rua</label>
+            <input id="rua" type="text" class="form-control" formControlName="rua" />
+          </div>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="numero" class="form-label">Numero</label>
-          <input id="numero" type="number" class="form-control" formControlName="numero" />
+        <div class="col-3">
+          <div class="mb-3">
+            <label for="numero" class="form-label">Numero</label>
+            <input id="numero" type="number" class="form-control" formControlName="numero" />
+          </div>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="complemento" class="form-label">Complemento</label>
-          <input id="complemento" type="text" class="form-control" formControlName="complemento" />
+        <div class="col-3">
+          <div class="mb-3">
+            <label for="complemento" class="form-label">Complemento</label>
+            <input id="complemento" type="text" class="form-control" formControlName="complemento" />
+          </div>
         </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="cep" class="form-label">CEP</label>
-          <input id="cep" type="text" class="form-control" formControlName="cep" />
+        <div class="col-3">
+          <div class="mb-3">
+            <label for="cep" class="form-label">CEP</label>
+            <input id="cep" type="text" class="form-control" formControlName="cep" />
+          </div>
         </div>
       </div>
       <div class="col-3">
