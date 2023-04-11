@@ -4,58 +4,56 @@
 <div>{{ clienteForm.value | json }}</div>
 <div class="container-fluid">
   <form [formGroup]= "clienteForm" (ngSubmit)="cadastrar()">
-    <div class="row">
-      <div class="col-6">
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input id="nome" type="text" class="form-control" formControlName="nome" />
+    <div class="row mb-3">
+      <label for="nome" class="col-sm-2 col-form-label">Nome</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome" >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="cpf" class="col-sm-2 col-form-label">CPF</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="cpf" placeholder="CPF" formControlName="cpf" >
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="telefone" placeholder="Telefone" formControlName="telefone" max="11" min="0" >
+      </div>
+    </div>
+    <div formGroupName="endereco" class="row">
+      <div class="row mb-3">
+        <label for="rua" class="col-sm-2 col-form-label">Rua</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="rua" placeholder="Rua" formControlName="rua">
         </div>
       </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="cpf" class="form-label">CPF</label>
-          <input id="cpf" type="number" class="form-control" formControlName="cpf" max="11" min="0" />
+      <div class="row mb-3">
+        <label for="numero" class="col-sm-2 col-form-label">Numero</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="numero" placeholder="Numero" formControlName="numero">
         </div>
       </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input id="telefone" type="text" class="form-control" formControlName="telefone" max="11" min="0" />
+      <div class="row mb-3">
+        <label for="complemento" class="col-sm-2 col-form-label">Complemento</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="complemento" placeholder="Complemento" formControlName="complemento">
         </div>
       </div>
-      <div formGroupName="endereco">
-        <div class="col-6">
-          <div class="mb-3">
-            <label for="rua" class="form-label">Rua</label>
-            <input id="rua" type="text" class="form-control" formControlName="rua" />
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="mb-3">
-            <label for="numero" class="form-label">Numero</label>
-            <input id="numero" type="number" class="form-control" formControlName="numero" />
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="mb-3">
-            <label for="complemento" class="form-label">Complemento</label>
-            <input id="complemento" type="text" class="form-control" formControlName="complemento" />
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="mb-3">
-            <label for="cep" class="form-label">CEP</label>
-            <input id="cep" type="text" class="form-control" formControlName="cep" />
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="mb-3">
-          <label for="rendimentoMensal" class="form-label">Rendimento Mensal</label>
-          <input id="rendimentoMensal" type="text" class="form-control" formControlName="rendimentoMensal" />
+      <div class="row mb-3">
+        <label for="cep" class="col-sm-2 col-form-label">CEP</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="cep" placeholder="CEP" formControlName="cep">
         </div>
       </div>
     </div>
-    <button type="submit" [disabled]="!clienteForm.valid" class="btn btn-dark">{{ clienteCpf ? 'Editar' : 'Cadastrar' }}</button>
+    <div class="row mb-3">
+      <label for="rendimentoMensal" class="col-sm-2 col-form-label">Rendimento Mensal</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="rendimentoMensal" placeholder="Rendimento Mensal" formControlName="rendimentoMensal">
+      </div>
+    </div>
+    <button type="submit"  class="btn btn-dark">{{ clienteCpf ? 'Editar' : 'Cadastrar' }}</button>
   </form>
 </div>
