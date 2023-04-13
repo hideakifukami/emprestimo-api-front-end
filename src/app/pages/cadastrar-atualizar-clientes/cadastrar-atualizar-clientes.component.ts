@@ -67,6 +67,12 @@ export class CadastrarAtualizarClientesComponent {
           'Favor preencher todos os dados!',
           'info'
         )
+      } else if (this.clientesService.retornarCliente(Number(this.clienteForm.value.cpf)) != null) {
+        Swal.fire(
+          'Erro!',
+          'CPF já cadastrado!',
+          'info'
+        )
       } else{
         this.clientesService.cadastrarCliente(cliente).subscribe(result => {
           Swal.fire(
@@ -79,10 +85,7 @@ export class CadastrarAtualizarClientesComponent {
         }
       }
     }
-
   }
-
-
 }
 
 
