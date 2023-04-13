@@ -9,6 +9,7 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { CadastrarAtualizarClientesComponent } from './pages/cadastrar-atualizar-clientes/cadastrar-atualizar-clientes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ClientesComponent,
     CadastrarAtualizarClientesComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

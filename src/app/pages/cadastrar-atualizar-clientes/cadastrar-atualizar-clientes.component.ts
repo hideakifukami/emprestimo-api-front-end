@@ -31,7 +31,7 @@ export class CadastrarAtualizarClientesComponent {
   ngOnInit() {
     this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     if (this.clienteCpf) {
-      this.clientesService.retornarCliente(this.clienteCpf).subscribe((cliente: ICliente) => {
+        this.clientesService.retornarCliente(this.clienteCpf).subscribe((cliente: ICliente) => {
         this.clienteForm.setValue({
           nome: cliente.nome || '',
           cpf: cliente.cpf || 0,
@@ -60,6 +60,8 @@ export class CadastrarAtualizarClientesComponent {
       console.error(error);
     }
   }
+
+  
 }
 
 

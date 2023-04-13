@@ -11,16 +11,20 @@ export class ClientesService {
   api = environment.api;
   constructor(private http: HttpClient) { }
 
-  retornarTodosOsClientes() {
-    return this.http.get<ICliente[]>(`${this.api}/${this.endpoint}`)
-  }
-
   cadastrarCliente(cliente: ICliente) {
     return this.http.post(`${this.api}/${this.endpoint}`, cliente);
   }
 
+  retornarTodosOsClientes() {
+    return this.http.get<ICliente[]>(`${this.api}/${this.endpoint}`)
+  }
+
   retornarCliente(cpf: number) {
     return this.http.get<ICliente>(`${this.api}/${this.endpoint}/${cpf}`)
+  }
+
+  deletarCliente(cpf: number) {
+    return this.http.delete<ICliente>(`${this.api}/${this.endpoint}/${cpf}`)
   }
 
 }

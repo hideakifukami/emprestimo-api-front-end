@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ICliente } from 'src/app/interfaces/cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-clientes',
@@ -15,5 +16,25 @@ export class ClientesComponent {
     this.clientesService.retornarTodosOsClientes().subscribe((result: ICliente[]) => {
       this.clientes = result;
     });
+  }
+
+  deletar(cpf: number) {
+    this.clientesService.deletarCliente(cpf).subscribe(result => {
+      Swal.fire({
+        title: 'Tem certeza que gostaria de deletar este cliente?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Deletar',
+        denyButtonText: `Não deletar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Cliente deletado com sucesso!', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('Cliente não deletado.', '', 'info')
+        }
+      })
+    }), (error: any) => {
+      console.error(error);
+    };
   }
 }
