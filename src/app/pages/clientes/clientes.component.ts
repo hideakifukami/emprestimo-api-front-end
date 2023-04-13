@@ -19,7 +19,7 @@ export class ClientesComponent {
   }
 
   deletar(cpf: number) {
-    this.clientesService.deletarCliente(cpf).subscribe(result => {
+    this.clientesService.retornarCliente(cpf).subscribe(result => {
       Swal.fire({
         title: 'Tem certeza que gostaria de deletar este cliente?',
         showDenyButton: true,
@@ -28,9 +28,11 @@ export class ClientesComponent {
         denyButtonText: `Não deletar`,
       }).then((result) => {
         if (result.isConfirmed) {
-          Swal.fire('Cliente deletado com sucesso!', '', 'success')
+          this.clientesService.deletarCliente(cpf).subscribe(result => {
+            Swal.fire('Cliente deletado com sucesso!', '', 'success').then((recarregar) => {window.location.reload();})
+          })
         } else if (result.isDenied) {
-          Swal.fire('Cliente não deletado.', '', 'info')
+          Swal.fire('Cliente não deletado.', '', 'info').then((recarregar) => {window.location.reload();})
         }
       })
     }), (error: any) => {

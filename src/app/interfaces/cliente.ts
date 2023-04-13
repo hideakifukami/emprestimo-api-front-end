@@ -5,7 +5,6 @@ export interface ICliente {
   endereco: {
     rua: string;
     numero: number;
-    complemento?: string;
     cep: string;
   }
   rendimentoMensal: number;

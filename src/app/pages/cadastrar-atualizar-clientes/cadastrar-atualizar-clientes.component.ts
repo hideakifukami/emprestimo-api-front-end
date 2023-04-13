@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Self } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { ICliente } from 'src/app/interfaces/cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,6 @@ export class CadastrarAtualizarClientesComponent {
     endereco: new FormGroup({
       rua: new FormControl('', Validators.required),
       numero: new FormControl(123, Validators.required),
-      complemento: new FormControl('', Validators.required),
       cep: new FormControl('', Validators.required)
     }),
     rendimentoMensal: new FormControl(1000, Validators.required)
@@ -39,7 +39,6 @@ export class CadastrarAtualizarClientesComponent {
           endereco: {
             rua: cliente.endereco.rua || '',
             numero: cliente.endereco.numero || null,
-            complemento: cliente.endereco.complemento || '',
             cep: cliente.endereco.cep || ''
           },
           rendimentoMensal: cliente.rendimentoMensal || null
@@ -49,19 +48,35 @@ export class CadastrarAtualizarClientesComponent {
   }
 
   cadastrar() {
+    this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     const cliente: ICliente = this.clienteForm.value as ICliente;
-    this.clientesService.cadastrarCliente(cliente).subscribe(result => {
-      Swal.fire(
-        'Parabéns!',
-        'Cliente cadastrado com sucesso!',
-        'success'
-      )
-    }), (error: any) => {
-      console.error(error);
+    if (this.clienteCpf) {
+      this.clientesService.alterarCliente(this.clienteCpf, cliente).subscribe(result => {
+        Swal.fire(
+          'Parabéns!',
+          'Cliente editado com sucesso!',
+          'success'
+        ).then((retornar) => {window.open("http://localhost:4200/clientes", "_self")})
+      }), (error: any) => {
+        console.error(error);
+      }
+    } else {
+      this.clientesService.cadastrarCliente(cliente).subscribe(result => {
+        Swal.fire(
+          'Parabéns!',
+          'Cliente cadastrado com sucesso!',
+          'success'
+        ).then((retornar) => {window.open("http://localhost:4200/clientes", "_self")})
+      }), (error: any) => {
+        console.error(error);
+      }
+
+
     }
+
   }
 
-  
+
 }
 
 

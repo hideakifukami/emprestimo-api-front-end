@@ -27,4 +27,7 @@ export class ClientesService {
     return this.http.delete<ICliente>(`${this.api}/${this.endpoint}/${cpf}`)
   }
 
+  alterarCliente(cpf: number, cliente: ICliente) {
+    return this.http.put<ICliente>(`${this.api}/${this.endpoint}/${cpf}`, cliente)
+  }
 }
