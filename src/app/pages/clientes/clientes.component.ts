@@ -18,7 +18,7 @@ export class ClientesComponent {
     });
   }
 
-  deletar(cpf: number) {
+  deletar(cpf: string) {
     this.clientesService.retornarCliente(cpf).subscribe(result => {
       Swal.fire({
         title: 'Cuidado! Tem certeza que deseja deletar o cliente?',
@@ -32,7 +32,7 @@ export class ClientesComponent {
             Swal.fire('Parabéns!', 'Cliente deletado com sucesso!', 'success').then((recarregar) => {window.location.reload();})
           })
         } else if (result.isDenied) {
-          Swal.fire('Cuidado!', 'Clientes deletados não podem ser recuperados!', 'info').then((recarregar) => {window.location.reload();})
+          Swal.fire('Cuidado!', 'Clientes deletados não podem ser recuperados!', 'info')
         }
       })
     }), (error: any) => {

@@ -15,14 +15,14 @@ export class CadastrarAtualizarClientesComponent {
 
   clienteForm = new FormGroup({
     nome: new FormControl('', Validators.required),
-    cpf: new FormControl(12345678910, Validators.required),
+    cpf: new FormControl('', Validators.required),
     telefone: new FormControl('', Validators.required),
     endereco: new FormGroup({
       rua: new FormControl('', Validators.required),
-      numero: new FormControl(123, Validators.required),
+      numero: new FormControl(0, Validators.required),
       cep: new FormControl('', Validators.required)
     }),
-    rendimentoMensal: new FormControl(1000, Validators.required)
+    rendimentoMensal: new FormControl(0, Validators.required)
   })
 
   constructor(private clientesService: ClientesService, private route: ActivatedRoute) {}
@@ -31,14 +31,14 @@ export class CadastrarAtualizarClientesComponent {
   ngOnInit() {
     this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     if (this.clienteCpf) {
-        this.clientesService.retornarCliente(this.clienteCpf).subscribe((cliente: ICliente) => {
+        this.clientesService.retornarCliente(String(this.clienteCpf)).subscribe((cliente: ICliente) => {
         this.clienteForm.setValue({
           nome: cliente.nome || '',
-          cpf: cliente.cpf || 0,
+          cpf: cliente.cpf || '',
           telefone: cliente.telefone || '',
           endereco: {
             rua: cliente.endereco.rua || '',
-            numero: cliente.endereco.numero || null,
+            numero: cliente.endereco.numero || 0,
             cep: cliente.endereco.cep || ''
           },
           rendimentoMensal: cliente.rendimentoMensal || null
@@ -51,7 +51,7 @@ export class CadastrarAtualizarClientesComponent {
     this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     const cliente: ICliente = this.clienteForm.value as ICliente;
     if (this.clienteCpf) {
-      this.clientesService.alterarCliente(this.clienteCpf, cliente).subscribe(result => {
+      this.clientesService.alterarCliente(String(this.clienteCpf), cliente).subscribe(result => {
         Swal.fire(
           'Parabéns!',
           'Cliente editado com sucesso!',

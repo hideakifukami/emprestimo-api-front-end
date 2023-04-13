@@ -19,15 +19,15 @@ export class ClientesService {
     return this.http.get<ICliente[]>(`${this.api}/${this.endpoint}`)
   }
 
-  retornarCliente(cpf: number) {
+  retornarCliente(cpf: string) {
     return this.http.get<ICliente>(`${this.api}/${this.endpoint}/${cpf}`)
   }
 
-  deletarCliente(cpf: number) {
+  deletarCliente(cpf: string) {
     return this.http.delete<ICliente>(`${this.api}/${this.endpoint}/${cpf}`)
   }
 
-  alterarCliente(cpf: number, cliente: ICliente) {
+  alterarCliente(cpf: string, cliente: ICliente) {
     return this.http.put<ICliente>(`${this.api}/${this.endpoint}/${cpf}`, cliente)
   }
 }

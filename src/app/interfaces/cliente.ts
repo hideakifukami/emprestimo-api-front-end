@@ -1,6 +1,6 @@
 export interface ICliente {
   nome: string;
-  cpf: number;
+  cpf: string;
   telefone: string;
   endereco: {
     rua: string;
