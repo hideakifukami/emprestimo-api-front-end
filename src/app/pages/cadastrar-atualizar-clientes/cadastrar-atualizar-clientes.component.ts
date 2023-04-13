@@ -61,17 +61,23 @@ export class CadastrarAtualizarClientesComponent {
         console.error(error);
       }
     } else {
-      this.clientesService.cadastrarCliente(cliente).subscribe(result => {
+      if (!this.clienteForm.valid) {
         Swal.fire(
-          'Parabéns!',
-          'Cliente cadastrado com sucesso!',
-          'success'
-        ).then((retornar) => {window.open("http://localhost:4200/clientes", "_self")})
-      }), (error: any) => {
-        console.error(error);
+          'Erro!',
+          'Favor preencher todos os dados!',
+          'info'
+        )
+      } else{
+        this.clientesService.cadastrarCliente(cliente).subscribe(result => {
+          Swal.fire(
+            'Parabéns!',
+            'Cliente cadastrado com sucesso!',
+            'success'
+          ).then((retornar) => {window.open("http://localhost:4200/clientes", "_self")})
+        }), (error: any) => {
+          console.error(error);
+        }
       }
-
-
     }
 
   }
