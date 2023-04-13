@@ -1,27 +1,15 @@
-# EmprestimoApiFrontEnd
+# CodeBank - FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+Este projeto foi criado com a utilização de Angular e BootStrap, com o intuito de acessar uma API CRUD de gerenciamento de clientes a partir de requisições HTTP. Também foi utiliado a biblioteca "SweetAlert2". O projeto foi feito como requisito para ingressar na empresa Minsait.
 
-## Development server
+## Como rodar?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para rodar, basta acessar a pasta do projeto e digitar `ng serve`. Depois, navegar até `http://localhost:4200/`. A aplicação irá funcionar, e caso a API de BackEnd esteja ativa, os dados serão recebidos.
 
-## Code scaffolding
+## Organização:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O código do frontend está organizado nos seguintes componentes:
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+-   **ClientesService**: Este componente detém todas operações  http de crud de clientes e permite que a aplicação liste, crie, edite e exclua clientes.
+-   **ClientesComponent**: Este componente exibe uma lista de clientes cadastrados e seus dados, permitindo que o usuário possa também excluir ou editar o cliente.
+-   **CadastrarAtualizarClientesComponent**: Este componente exibe um formulário para criar ou editar um cliente.
