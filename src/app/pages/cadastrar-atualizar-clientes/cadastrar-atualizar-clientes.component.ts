@@ -51,12 +51,23 @@ export class CadastrarAtualizarClientesComponent {
     this.clienteCpf = Number(this.route.snapshot.paramMap.get('cpf'));
     const cliente: ICliente = this.clienteForm.value as ICliente;
     if (this.clienteCpf) {
+      const cpfArmazenado: number = Number(this.clienteForm.value.cpf);
       this.clientesService.alterarCliente(String(this.clienteCpf), cliente).subscribe(result => {
         Swal.fire(
           'Parabéns!',
           'Cliente editado com sucesso!',
           'success'
-        ).then((retornar) => {window.open("http://localhost:4200/clientes", "_self")})
+        ).then((retornar) => {
+          if (cpfArmazenado != this.clienteCpf) {
+            this.clientesService.deletarCliente(String(this.clienteCpf)).subscribe(result => {
+              window.open("http://localhost:4200/clientes", "_self");
+            });
+          }
+
+          window.open("http://localhost:4200/clientes", "_self");
+
+          }
+        )
       }), (error: any) => {
         console.error(error);
       }
