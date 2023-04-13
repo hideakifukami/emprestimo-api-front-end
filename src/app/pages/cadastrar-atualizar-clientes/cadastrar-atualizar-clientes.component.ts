@@ -72,18 +72,23 @@ export class CadastrarAtualizarClientesComponent {
         console.error(error);
       }
     } else {
+      const cpfArmazenado: number = Number(this.clienteForm.value.cpf);
+      this.clientesService.retornarCliente(String(this.clienteForm.value.cpf)).subscribe(clienteEncontrado => {
+        if (Number(clienteEncontrado.cpf) == cpfArmazenado) {
+          Swal.fire(
+            'Erro!',
+            'CPF já cadastrado!',
+            'info'
+          )
+        }
+      });
+
       if (!this.clienteForm.valid) {
         Swal.fire(
           'Erro!',
           'Favor preencher todos os dados!',
           'info'
         )
-      // } else if (this.clientesService.retornarCliente(Number(this.clienteForm.value.cpf)) != null) {
-      //   Swal.fire(
-      //     'Erro!',
-      //     'CPF já cadastrado!',
-      //     'info'
-      //   )
       } else{
         this.clientesService.cadastrarCliente(cliente).subscribe(result => {
           Swal.fire(
