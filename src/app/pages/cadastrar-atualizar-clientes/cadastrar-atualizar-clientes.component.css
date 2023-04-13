@@ -1,3 +1,10 @@
-div.container-fluid {
-  width: 50vw;
+div #panel {
+  max-width: 500px;
+  min-width: 300px;
+  margin: auto;
+}
+
+div .endereco {
+  margin: 0;
+  padding: 0;
 }
