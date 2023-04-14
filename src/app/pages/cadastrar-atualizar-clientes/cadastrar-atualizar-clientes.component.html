@@ -58,7 +58,7 @@
   <h1 class="display-6 fs-2 pt-3" >{{ clienteCpf ? 'Editar' : 'Cadastrar' }}</h1>
   <hr>
 
-  <div id="panel" class="panel panel-default no-padding bg-whit shadow px-4 py-4 pt-5 mt-4" >
+  <div id="panel" class="panel panel-default no-padding bg-whit shadow p-4 my-4 mt-5" >
     <div class="panel-body no-padding">
       <form [formGroup]= "clienteForm" (ngSubmit)="cadastrar()">
         <div class="row mb-3">
@@ -71,12 +71,19 @@
           <label for="cpf" class="col-sm-2 col-form-label">CPF</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="cpf" placeholder="CPF" formControlName="cpf" >
+            <i class="fa fa-info-circle" placement="right" ngbPopover="O CPF precisa ter 11 dígitos." popoverTitle="Validação de CPF"></i>
+            <div *ngIf="clienteForm.get('cpf')!.invalid && (clienteForm.get('cpf')!.dirty || clienteForm.get('cpf')!.touched)">
+              <div *ngIf="clienteForm.get('cpf')!.errors!['pattern']" >O CPF deve ter 11 dígitos.</div>
+            </div>
           </div>
         </div>
         <div class="row mb-3">
           <label for="telefone" class="col-sm-2 col-form-label">Telefone</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="telefone" placeholder="Telefone" formControlName="telefone" max="11" min="0" >
+            <div *ngIf="clienteForm.get('telefone')!.invalid && (clienteForm.get('telefone')!.dirty || clienteForm.get('telefone')!.touched)">
+              <div *ngIf="clienteForm.get('telefone')!.errors!['pattern']">O telefone inserido é inválido.</div>
+            </div>
           </div>
         </div>
         <div formGroupName="endereco" class="row">
@@ -96,6 +103,9 @@
             <label for="cep" class="col-sm-2 col-form-label">CEP</label>
             <div class="col-sm-10">
               <input type="text" class="form-control" id="cep" placeholder="CEP" formControlName="cep">
+              <div *ngIf="clienteForm.get('endereco.cep')!.invalid && (clienteForm.get('endereco.cep')!.dirty || clienteForm.get('endereco.cep')!.touched)">
+                <div *ngIf="clienteForm.get('endereco.cep')!.errors!['pattern']">O CEP deve ter 8 dígitos.</div>
+              </div>
             </div>
           </div>
         </div>

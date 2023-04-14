@@ -1,4 +1,7 @@
 main {
-  display: flex;
   flex-wrap: nowrap;
+}
+
+.container-fluid {
+  margin-left: 240px;
 }

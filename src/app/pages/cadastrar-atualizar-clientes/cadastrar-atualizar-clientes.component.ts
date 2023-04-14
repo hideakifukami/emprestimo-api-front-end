@@ -15,12 +15,12 @@ export class CadastrarAtualizarClientesComponent {
 
   clienteForm = new FormGroup({
     nome: new FormControl('', Validators.required),
-    cpf: new FormControl('', Validators.required),
-    telefone: new FormControl('', Validators.required),
+    cpf: new FormControl('', [Validators.required, Validators.pattern(/^\d{11}$/)]),
+    telefone: new FormControl('', [Validators.required, Validators.pattern(/^\d{7,14}$/)]),
     endereco: new FormGroup({
       rua: new FormControl('', Validators.required),
       numero: new FormControl(0, Validators.required),
-      cep: new FormControl('', Validators.required)
+      cep: new FormControl('', [Validators.required, Validators.pattern(/^\d{8}$/)])
     }),
     rendimentoMensal: new FormControl(0, Validators.required)
   })
@@ -76,8 +76,8 @@ export class CadastrarAtualizarClientesComponent {
       this.clientesService.retornarCliente(String(this.clienteForm.value.cpf)).subscribe(clienteEncontrado => {
         if (Number(clienteEncontrado.cpf) == cpfArmazenado) {
           Swal.fire(
-            'Erro!',
-            'CPF já cadastrado!',
+            'Algo está errado!',
+            'Este CPF está associado a um cliente cadastrado.',
             'info'
           )
         }
@@ -85,8 +85,8 @@ export class CadastrarAtualizarClientesComponent {
 
       if (!this.clienteForm.valid) {
         Swal.fire(
-          'Erro!',
-          'Favor preencher todos os dados!',
+          'Algo está errado!',
+          'Verifique se os dados estão preenchidos corretamente.',
           'info'
         )
       } else{
