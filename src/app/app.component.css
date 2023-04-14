@@ -4,4 +4,5 @@ main {
 
 .container-fluid {
   margin-left: 240px;
+  min-height: 100vh;
 }
