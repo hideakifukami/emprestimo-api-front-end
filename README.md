@@ -1,17 +1,27 @@
 # CodeBank - FrontEnd
 
-Este projeto foi criado com a utilização de Angular e BootStrap, com o intuito de acessar uma API CRUD de gerenciamento de clientes a partir de requisições HTTP. Também foi utiliado a biblioteca "SweetAlert2". 
+Este é o projeto frontend do CodeBank, criado utilizando Angular e Bootstrap. A aplicação se comunica com uma API de gerenciamento de clientes através de requisições HTTP. Além disso, a biblioteca SweetAlert2 foi utilizada para exibir alertas personalizados.
 
-## Como rodar?
+## Como executar a aplicação?
 
-Para rodar, basta acessar a pasta do projeto e digitar `ng serve`. Depois, navegar até `http://localhost:4200/`. A aplicação irá funcionar, e caso a API de BackEnd esteja ativa, os dados serão recebidos.
+Para executar a aplicação, siga os passos abaixo:
 
-## Organização:
+1. Certifique-se de que o Node.js e o Angular CLI estão instalados em sua máquina.
+2. Faça o clone deste repositório.
+3. Abra o terminal na pasta raiz do projeto.
+4. Execute o comando npm install para instalar as dependências do projeto.
+5. Execute o comando ng serve para iniciar a aplicação.
+6. Acesse http://localhost:4200/ em seu navegador.
+7. Se a API de backend estiver ativa, os dados serão recebidos e exibidos na aplicação.
 
-1. **ClientesService**: Este componente detém todas operações  http de crud de clientes e permite que a aplicação liste, crie, edite e exclua clientes.
+## Organização do Projeto:
 
-2. **ClientesComponent**: Este componente exibe uma lista de clientes cadastrados e seus dados, permitindo que o usuário possa também excluir ou editar o cliente.
+A seguir, é apresentada a organização dos componentes do projeto:
 
-3. **HomeComponent**: Componente que corresponde a uma página inicial simples.
+1. **ClientesService**: Este componente é responsável por realizar as operações CRUD de clientes através de requisições HTTP.
+
+2. **ClientesComponent**: Este componente exibe uma lista de clientes cadastrados, permitindo que o usuário possa excluir ou editar um cliente.
+
+3. **HomeComponent**: Componente que corresponde à página inicial da aplicação.
 
 4. **CadastrarAtualizarClientesComponent**: Este componente exibe um formulário para criar ou editar um cliente.
